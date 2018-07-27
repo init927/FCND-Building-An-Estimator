@@ -1,6 +1,6 @@
 
-#Implement Estimator
-##Determine the standard deviation of the measurement noise of both GPS X data and Accelerometer X data.
+# Implement Estimator
+## Determine the standard deviation of the measurement noise of both GPS X data and Accelerometer X data.
 
 This was done using std.py where a data file Graph1.txt and Graph2.txt where load and then using numpy in python we had achieved our standard Deviation goal. 
 
@@ -18,7 +18,7 @@ This step was achieved by using rotation matrix where phi and theta were values 
 The UpdateFromIMU in C++ is implemented in QuadEstimatorEKF.cpp starting from **line 98 to 121**.
 
 
-##Implement all of the elements of the prediction step for the estimator.
+## Implement all of the elements of the prediction step for the estimator.
 
 PredictState() Function: In this case, We have input as currentState which is know as start state, dt also know as time step, accel input as acceleration and gyro. This will allow us to implement Prediction of the current state forward by time dt using current accelerations and body rates as input. This is done using this equation as follows:
 ![image](/Users/rishibhalodia/Desktop/image/Screen Shot 2018-06-06 at 2.40.08 AM.png)
@@ -33,13 +33,13 @@ This matrix is defined as follows:
 Predict() Function: This will allow us to update the member variable cov to the predicted covariance(EKF_State) which can be achieved by intergation process. The formula we used can be given as follows:
 ![iamge](/Users/rishibhalodia/Desktop/image/Screen Shot 2018-06-06 at 2.52.36 AM.png)
 
-##Implement the magnetometer update.
+## Implement the magnetometer update.
 
 To implement the update, we need to use the equations from section 7.3.2 Magnetometer from the Estimation for Quadrotors paper. We assume we get a reading from the magnetometer reporting yaw in the global frame.This measurement may need to be computed using roll and pitch from the attitude filter and the mag vector.
 ![image](image/Screen Shot 2018-06-06 at 3.05.15 AM.png)
 This would update include the magnetometer data into the state.Angles are correctly measure and the angle error between the current state and the magnetometer value are verfied.
 
-##Implement the GPS update.
+## Implement the GPS update.
 
 This uses basic concept were we assume we get position and velocity from the GPS. We considered
 using heading from the GPS, but this does not take into account the drone's orientation, only the direction of travel and this GPS measurement covariance is available in member variable R_GPS. It can be represented as follows as h and hPrime.
